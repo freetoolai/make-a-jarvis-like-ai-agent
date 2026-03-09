@@ -1,1 +1,93 @@
 @import "tailwindcss";
+
+:root {
+  --cyan-glow: 0 0 20px rgba(0, 212, 255, 0.5);
+  --cyan-primary: #00d4ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 212, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.5);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes text-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 30px rgba(0, 212, 255, 0.4);
+  }
+}
+
+.animate-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-scan {
+  animation: scan-line 4s linear infinite;
+}
+
+.animate-text-glow {
+  animation: text-glow 2s ease-in-out infinite;
+}
+
+/* Input focus states */
+input:focus,
+button:focus {
+  outline: none;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: #fff;
+}
