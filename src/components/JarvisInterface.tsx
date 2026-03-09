@@ -271,7 +271,7 @@ export default function JarvisInterface() {
               >
                 <p className="text-sm leading-relaxed">{message.content}</p>
                 <p className="text-xs text-cyan-500/50 mt-2">
-                  {message.timestamp.toLocaleTimeString()}
+                  {message.timestamp.toLocaleTimeString("en-US", { hour12: false })}
                 </p>
               </div>
             </div>
