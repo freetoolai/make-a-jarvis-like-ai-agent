@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Mic, MicOff, Settings, X, Send, Sparkles } from "lucide-react";
+import { Mic, MicOff, Settings, X, Send, Sparkles, Play, Square } from "lucide-react";
+import { SkiperButton } from "@/components/ui/skipper-button";
 
 interface Message {
   id: string;
@@ -201,12 +202,13 @@ export default function JarvisInterface() {
               Jarvis
             </h1>
           </div>
-          <button
-            onClick={() => setShowSettings(!showSettings)}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-          >
-            <Settings className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-          </button>
+          <SkiperButton
+              icon={Settings}
+              isExpanded={showSettings}
+              onToggle={() => setShowSettings(!showSettings)}
+              variant="secondary"
+              size="sm"
+            />
         </div>
       </header>
 
@@ -217,12 +219,12 @@ export default function JarvisInterface() {
             <div className="bg-white dark:bg-[#2d2d2f] rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-800 p-4">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-gray-900 dark:text-white">Settings</h3>
-                <button
+                <SkiperButton
+                  icon={X}
                   onClick={() => setShowSettings(false)}
-                  className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <X className="w-4 h-4 text-gray-500" />
-                </button>
+                  variant="secondary"
+                  size="sm"
+                />
               </div>
               <div className="space-y-4">
                 <div>
@@ -238,18 +240,20 @@ export default function JarvisInterface() {
                   />
                 </div>
                 <div className="flex gap-2">
-                  <button
+                  <SkiperButton
+                    icon={Play}
+                    label="Save"
                     onClick={saveApiKey}
-                    className="flex-1 bg-blue-500 text-white py-2 rounded-xl text-sm font-medium hover:bg-blue-600 transition-colors"
-                  >
-                    Save
-                  </button>
-                  <button
+                    variant="primary"
+                    size="sm"
+                  />
+                  <SkiperButton
+                    icon={Square}
+                    label="Clear"
                     onClick={clearApiKey}
-                    className="flex-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-2 rounded-xl text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                  >
-                    Clear
-                  </button>
+                    variant="secondary"
+                    size="sm"
+                  />
                 </div>
               </div>
             </div>
@@ -306,20 +310,13 @@ export default function JarvisInterface() {
             )}
             
             <div className="flex items-center gap-2 p-2">
-              <button
+              <SkiperButton
+                icon={isListening ? MicOff : Mic}
+                isExpanded={isListening}
                 onClick={toggleListening}
-                className={`p-3 rounded-full transition-all ${
-                  isListening 
-                    ? "bg-red-500 text-white" 
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
-                }`}
-              >
-                {isListening ? (
-                  <MicOff className="w-5 h-5" />
-                ) : (
-                  <Mic className="w-5 h-5" />
-                )}
-              </button>
+                variant={isListening ? "danger" : "secondary"}
+                size="md"
+              />
               
               <input
                 type="text"
@@ -330,17 +327,13 @@ export default function JarvisInterface() {
                 className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-400 text-[15px] focus:outline-none"
               />
               
-              <button
+              <SkiperButton
+                icon={Send}
                 onClick={() => handleSendMessage()}
                 disabled={!inputText.trim() || isLoading}
-                className={`p-3 rounded-full transition-all ${
-                  inputText.trim() && !isLoading
-                    ? "bg-blue-500 text-white hover:bg-blue-600"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-400"
-                }`}
-              >
-                <Send className="w-5 h-5" />
-              </button>
+                variant={inputText.trim() && !isLoading ? "primary" : "secondary"}
+                size="md"
+              />
             </div>
           </div>
           
