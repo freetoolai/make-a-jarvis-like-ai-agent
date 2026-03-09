@@ -18,6 +18,7 @@ The Jarvis AI assistant now features a VoicePoweredOrb visual element on the mai
 - [x] Complete UI redesign to Apple-like minimalist style
 - [x] VoicePoweredOrb component integration (WebGL)
 - [x] Add VoicePoweredOrb to main page background
+- [x] Add SkiperButton component (animated pill-style buttons)
 
 ## Current Structure
 
@@ -29,6 +30,7 @@ The Jarvis AI assistant now features a VoicePoweredOrb visual element on the mai
 | `src/components/JarvisInterface.tsx` | Jarvis AI component (minimalist) | ✅ Ready |
 | `src/components/ui/voice-powered-orb.tsx` | WebGL voice-reactive orb | ✅ Ready |
 | `src/components/ui/button.tsx` | shadcn Button component | ✅ Ready |
+| `src/components/ui/skipper-button.tsx` | Animated pill-style toggle button | ✅ Ready |
 | `src/lib/utils.ts` | cn() utility for class merging | ✅ Ready |
 | `src/app/orb-demo/page.tsx` | Demo page for VoicePoweredOrb | ✅ Ready |
 | `src/types/speech.d.ts` | Speech API types | ✅ Ready |
